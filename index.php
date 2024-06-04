@@ -2,6 +2,7 @@
 
 
 session_start();
+const PATH_ROOT =__DIR__ .'/';
 
 require 'vendor/autoload.php';
 

@@ -44,17 +44,18 @@ class Model
 
     public function paginate($page = 1, $perPage = 5)
     {
+        $queryBuilder =clone($this->queryBuilder);
+        $totalPage = ceil($this->count() / $perPage);
+
         $offset = $perPage * ($page - 1);
 
-        $data = $this->queryBuilder
+        $data = $queryBuilder
             ->select('*')
             ->from($this->tableName)
             ->setFirstResult($offset)
             ->setMaxResults($perPage)
             ->orderBy('id', 'desc')
             ->fetchAllAssociative();
-
-        $totalPage = ceil($this->count() / $perPage);
 
         return [$data, $totalPage];
     }
