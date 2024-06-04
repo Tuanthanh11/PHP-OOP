@@ -3,6 +3,7 @@
 use Thanh\XuongOop\Controllers\Client\AboutController;
 use Thanh\XuongOop\Controllers\Client\ContactController;
 use Thanh\XuongOop\Controllers\Client\HomeController;
+use Thanh\XuongOop\Controllers\Client\LoginController;
 use Thanh\XuongOop\Controllers\Client\ProductController;
 
 $router->get('/client', function () {
@@ -31,3 +32,7 @@ $router->post('/contact/store', ContactController::class . '@store');
 
 $router->get('/products',       ProductController::class . '@index');
 $router->get('/products{id}',   ProductController::class . '@detail');
+
+$router->get('/login',       LoginController::class . '@showFormlogin');
+$router->post('/handle-login',   LoginController::class . '@login');
+$router->get('/logout',   LoginController::class . '@logout');

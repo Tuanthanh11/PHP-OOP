@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $user = new  User();
-        Helper::debug($user);
+        // $user = new  User();
+        // Helper::debug($user);
 
         $name = 'Thanh dz';
         $this->renderViewClient('home', [
