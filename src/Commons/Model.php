@@ -2,13 +2,13 @@
 
 namespace Thanh\XuongOop\Commons;
 
-
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 class Model
 {
-    protected  $conn;
+    protected Connection|null $conn;
     protected QueryBuilder $queryBuilder;
 
     protected string $tableName;
@@ -25,6 +25,10 @@ class Model
         ];
         $this->conn = DriverManager::getConnection($connectionParams);
         $this->queryBuilder = $this->conn->createQueryBuilder();
+    }
+
+    public function getConnection(){
+        return $this->conn;
     }
     // CRUD
     public function all()

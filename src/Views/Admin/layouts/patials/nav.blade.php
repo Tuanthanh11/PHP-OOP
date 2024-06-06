@@ -19,15 +19,15 @@
                 <div class="icon_menu">
                     <img src="{{ asset('assets/admin/img/menu-icon/2.svg') }}" alt>
                 </div>
-                <span>Apps</span>
+                <span>User</span>
             </a>
         </li>
         <li class>
-            <a href="#" aria-expanded="false">
+            <a href="{{ url('admin/products') }}" aria-expanded="false">
                 <div class="icon_menu">
                     <img src="{{ asset('assets/admin/img/menu-icon/3.svg') }}" alt>
                 </div>
-                <span>UI Kits</span>
+                <span>Sản phẩm</span>
             </a>
         </li>
         <li class>

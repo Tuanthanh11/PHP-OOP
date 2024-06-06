@@ -37,7 +37,14 @@ class LoginController extends Controller
 
                 $_SESSION['user'] = $user;
 
-                header('Location:' . url('admin/'));
+                unset($_SESSION['cart']);
+
+                if ($user['type'] == 'admin') {
+                    header('Location: ' . url('admin/') );
+                    exit;
+                }
+
+                header('Location: ' . url() );
                 exit;
             }
             throw new \Exception('Password khong dung!');
@@ -51,6 +58,8 @@ class LoginController extends Controller
 
     public function logout()
     {
+        unset($_SESSION['cart-' . $_SESSION['user']['id']]);
+
         unset($_SESSION['user']);
         header('Location:' . url('/'));
         exit;
