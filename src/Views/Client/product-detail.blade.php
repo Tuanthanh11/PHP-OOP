@@ -31,23 +31,20 @@
         </div>
 
         <div class="row">
-            @foreach ($products as $product)
-                <div class="col-md-4 mb-2 mt-2">
+        <div class="col-md-4 mb-2 mt-2">
                     <div class="card" style="width:400px">
-                        <a href="{{ url('/products/' . $product['id']) }}">
-                            <img class="card-img-top" style="max-height:200px"
-                                src="{{ asset($product['img_thumbnail']) }}" alt="Card image">
-                        </a>
+                        <img class="card-img-top" style="max-height:200px" src="{{ asset($product['img_thumbnail']) }}" alt="Card image">
                         <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="{{ url('/products/' . $product['id']) }}">{{ $product['name'] }}</a>
-                            </h4>
-                            <a href="{{ url('cart/add') }}?quantity=1&productID={{ $product['id'] }} "
-                             class="btn btn-primary">App to cart</a>
+                            <h4 class="card-title">{{ $product['name'] }}</h4>
+          
+                            <form action="{{ url('cart/add') }}" method="get">
+                                <input type="hidden" name="productID" value="{{$product['id']}}">
+                                <input type="number" min="1" name="quantity">
+                                <button class="btn btn-primary" type="submit">App to cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            @endforeach
         </div>
     </div>
 </body>

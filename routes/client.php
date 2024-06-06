@@ -1,9 +1,11 @@
 <?php
 
 use Thanh\XuongOop\Controllers\Client\AboutController;
+use Thanh\XuongOop\Controllers\Client\CartController;
 use Thanh\XuongOop\Controllers\Client\ContactController;
 use Thanh\XuongOop\Controllers\Client\HomeController;
 use Thanh\XuongOop\Controllers\Client\LoginController;
+use Thanh\XuongOop\Controllers\Client\OrderController;
 use Thanh\XuongOop\Controllers\Client\ProductController;
 
 $router->get('/client', function () {
@@ -24,15 +26,25 @@ $router->get('/client', function () {
 
 // HTTP Method: get, post, put(path), delete, option, head
 
-$router->get('/',               HomeController::class . '@index');
-$router->get('/about',          AboutController::class . '@index');
+$router->get('/',                   HomeController::class . '@index');
+$router->get('/about',              AboutController::class . '@index');
 
-$router->get('/contract',       ContactController::class . '@index');
-$router->post('/contact/store', ContactController::class . '@store');
+$router->get('/contract',           ContactController::class . '@index');
+$router->post('/contact/store',     ContactController::class . '@store');
 
-$router->get('/products',       ProductController::class . '@index');
-$router->get('/products{id}',   ProductController::class . '@detail');
+$router->get('/products',           ProductController::class . '@index');
+$router->get('/products/{id}',      ProductController::class . '@detail');
 
-$router->get('/login',       LoginController::class . '@showFormlogin');
-$router->post('/handle-login',   LoginController::class . '@login');
-$router->get('/logout',   LoginController::class . '@logout');
+$router->get('/login',              LoginController::class . '@showFormlogin');
+$router->post('/handle-login',      LoginController::class . '@login');
+$router->get('/logout',             LoginController::class . '@logout');
+
+$router->get('/cart/add' ,          CartController::class .'@add');
+$router->get('/cart/quantityInc' ,  CartController::class .'@quantityInc');
+$router->get('/cart/quantityDec' ,  CartController::class .'@quantityDec');
+$router->get('/cart/remove' ,       CartController::class .'@remove');
+$router->get('/cart/detail' ,       CartController::class .'@detail');
+
+$router->post('order/checkout',     OrderController::class . '@checkout');
+
+
